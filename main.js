@@ -10,6 +10,7 @@ const app = new Vue({
     data:{
         add:``,
         error:``,
+        empty:``,
         list:[
             `fare i compiti`,
             `fare la spesa`,
@@ -18,15 +19,17 @@ const app = new Vue({
     },
     methods:{
         removeItem:function removeItem(index){
-            this.list.splice(index , 1)
+            if(this.list.length != 0){
+                this.list.splice(index , 1)
+            }
         },
         addItem:function addItem(){
             this.error=``
-            if(this.add != ""){
+            if(this.add != "" && this.add.length > 5){
                 this.list.push(this.add)
                 this.error = ``
             }else{
-                this.error=`devi scrivere qualcosa da fare`
+                this.error=`devi scrivere qualcosa da fare che abbia almeno 5 caratteri`
             }
         }
     }
