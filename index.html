@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <input type="text" v-model="add">
+        <input type="text" @keyup.enter="addItem" v-model="add">
         <button @click="addItem">aggiungi</button>
         <div class="error" v-show="error">
             {{error}}
