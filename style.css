@@ -21,7 +21,7 @@ input{
     border-radius: 10px;
     width: 300px;
 }
-button{
+.form button{
     padding:.5rem 1rem;
     margin-left: 1rem;
     border-radius: 10px;
@@ -42,4 +42,22 @@ button{
 .error{
     color: red;
     margin-top: 1rem;
+}
+.altrimenti{
+    background-color: green;
+    color: white;
+    padding: 1rem;
+    margin: 3rem;
+    border-radius: 10px;
+}
+.buttonClass{
+    display: flex;
+    justify-content: center;
+}
+.allDone{
+    background-color: green;
+    color: white;
+    padding: .5rem 1rem;
+    border: 1px solid lime;
+    margin: 3rem  0;
 }

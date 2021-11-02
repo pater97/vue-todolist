@@ -31,6 +31,9 @@ const app = new Vue({
             }else{
                 this.error=`devi scrivere qualcosa da fare che abbia almeno 5 caratteri`
             }
+        },
+        allDone: function allDone(index){
+            this.list.splice(index,100)
         }
     }
 }) 
