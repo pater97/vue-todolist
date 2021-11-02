@@ -8,6 +8,8 @@
 const app = new Vue({
     el:`#app`,
     data:{
+        add:``,
+        error:``,
         list:[
             `fare i compiti`,
             `fare la spesa`,
@@ -16,7 +18,16 @@ const app = new Vue({
     },
     methods:{
         removeItem:function removeItem(index){
-            this.list.splice(index)
+            this.list.splice(index , 1)
+        },
+        addItem:function addItem(){
+            this.error=``
+            if(this.add != ""){
+                this.list.push(this.add)
+                this.error = ``
+            }else{
+                this.error=`devi scrivere qualcosa da fare`
+            }
         }
     }
 }) 

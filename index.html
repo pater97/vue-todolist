@@ -10,6 +10,11 @@
 </head>
 <body>
     <div id="app">
+        <input type="text" v-model="add">
+        <button @click="addItem">aggiungi</button>
+        <div class="error" v-show="error">
+            {{error}}
+        </div>
         <div class="item" v-for="(item,index) in list">
             <h2>{{item}}</h2>
             <span @click="removeItem(index)"><i class="fas fa-times"></i></span>
