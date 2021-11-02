@@ -8,9 +8,15 @@
 const app = new Vue({
     el:`#app`,
     data:{
-
+        list:[
+            `fare i compiti`,
+            `fare la spesa`,
+            `fare il bucato`
+        ]
     },
     methods:{
-        
+        removeItem:function removeItem(index){
+            this.list.splice(index)
+        }
     }
 }) 

@@ -10,7 +10,10 @@
 </head>
 <body>
     <div id="app">
-        
+        <div class="item" v-for="(item,index) in list">
+            <h2>{{item}}</h2>
+            <span @click="removeItem(index)"><i class="fas fa-times"></i></span>
+        </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="./main.js"></script>
