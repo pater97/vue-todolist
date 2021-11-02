@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>ToDoListt</title>
+</head>
+<body>
+    <!-- radice per vue  -->
+    <div id="app">
+        <!-- container principale -->
+        <main class="container">
+            <div class="image">
+                <img src="http://boolean.careers/images/misc/logo.png" alt="logo boolean">
+            </div>
+            <!-- navigazione -->
+            <nav class="form">
+                <input type="text" placeholder="Nuovo ToDo" @keyup.enter="addItem" v-model="add">
+                <button @click="addItem">Aggiungi</button>
+            </nav>
+            <!-- messaggio di errore -->
+            <div class="error" v-show="error">
+               {{error}}
+            </div>
+            <!-- contenitore delle 3 liste  -->
+            <div class="liste_varie">
+                <!-- lista principale  -->
+                <section v-if="list.length != 0" class="list_container">
+                    <h2 class="title">TO DO LIST</h2>
+                    <div class="item" v-for="(item,index) in list">
+                       <input class="itemElement" type="text" v-model="item">
+                       <div class="icone">
+                           <span @click="removeItem(index,item)"><i class="fas fa-times"></i></span>
+                           <span @click="doneThisItem(item,index)"><i class="fas fa-thumbs-up"></i></span>
+                       </div>
+                    </div>
+                    <div class="buttonClass">
+                        <button class="allDone" @click="allDone(index,item)">Lista completata</button>
+                    </div>
+                </section>
+                <div class="altrimenti" v-else>INSERISCI COSE DA FARE</div>
+                <!-- lista completate  -->
+                <div class="task_completate">
+                    <h2 class="title">COMPLETATE</h2>
+                    <div class="item" v-for="item in taskComplete">
+                        <h2>{{item}}</h2>
+                        <span @click="back(item,index)"><i class="fas fa-history"></i></span>
+                    </div>
+                </div>
+                <!-- lista eliminate -->
+                <div class="task_eliminate">
+                    <h2 class="title">ELIMINATE</h2>
+                    <div class="item" v-for="item in taskDelete">
+                        <h2>{{item}}</h2>
+                        <span @click="returnToList(item)"><i class="fas fa-eject"></i></span>
+                    </div>
+                        <div class="buttonClass">
+                            <button class="removeAll" @click="removeAll(index)">Rimuovi tutto</button>
+                        </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html>
